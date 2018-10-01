@@ -6,8 +6,6 @@ jenkins:
   agentProtocols:
   - "CLI-connect"
   - "CLI2-connect"
-  - "JNLP-connect"
-  - "JNLP2-connect"
   - "JNLP4-connect"
   - "Ping"
   authorizationStrategy:
@@ -754,25 +752,8 @@ jenkins:
   views:
   - all:
       name: "all"
-unclassified:
-  bitbucketendpointconfiguration:
-    endpoints:
-    - bitbucketCloudEndpoint:
-        manageHooks: false
-  gitlabconnectionconfig:
-    connections:
-    - clientBuilderId: "autodetect"
-      connectionTimeout: 10
-      ignoreCertificateErrors: false
-      readTimeout: 10
 tool:
   git:
     installations:
     - home: "git"
       name: "Default"
-  jdk:
-    defaultProperties:
-    - installSource:
-        installers:
-        - jdkInstaller:
-            acceptLicense: false

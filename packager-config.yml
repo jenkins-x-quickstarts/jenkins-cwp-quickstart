@@ -5,36 +5,21 @@ bundle:
   title: "Jenkinsfile Runner demo"
   description: "Jenkinsfile Runner Docker Image, produced by Custom WAR Packager"
 buildSettings:
-  jenkinsfileRunner:
-    source:
-      groupId: "io.jenkins"
-      artifactId: "jenkinsfile-runner"
-      build:
-        # Jenkinsfile Runner produces appassembler directory which is not a maven artifact
-        #TODO: replace once Jenkinsfile Runner archives runner & CWP is updated
-        noCache: true
-      source:
-        #dir: "/Users/nenashev/Documents/jenkins/tools/jenkinsfile-runner"
-        git: https://github.com/kohsuke/jenkinsfile-runner.git
-        commit: 8ff9b1e9a097e629c5fbffca9a3d69750097ecc4
-    docker:
-      base: "jenkins/jenkins:2.121.3"
-      tag: "jenkins-experimental/cwp-jenkinsfile-runner-demo"
-      build: true
 war:
   groupId: "org.jenkins-ci.main"
   artifactId: "jenkins-war"
   source:
-    version: "2.121.3"
+    version: "2.144"
+
 plugins:
   - groupId: "org.jenkins-ci.plugins.workflow"
     artifactId: "workflow-job"
     source:
-      version: "2.24"
+      version: "2.25"
   - groupId: "org.jenkins-ci.plugins.workflow"
     artifactId: "workflow-cps"
     source:
-      version: "2.54"
+      version: "2.56"
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "pipeline-utility-steps"
     source:
@@ -42,7 +27,7 @@ plugins:
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "cloudbees-folder"
     source:
-      version: "6.5.1"
+      version: "6.6"
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "credentials"
     source:
@@ -50,15 +35,11 @@ plugins:
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "structs"
     source:
-      version: "1.14"
+      version: "1.15"
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "scm-api"
     source:
-      version: "2.2.7"
-  # - groupId: "org.jenkins-ci.plugins"
-  #   artifactId: "ssh-credentials"
-  #   source:
-  #     version: "1.12"
+      version: "2.2.8"
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "credentials-binding"
     source:
@@ -70,24 +51,23 @@ plugins:
   - groupId: "io.jenkins"
     artifactId: "configuration-as-code"
     source:
-      version: "1.0-rc2"
+      version: "1.0"
   - groupId: "org.jenkinsci.plugins"
     artifactId: "kubernetes-credentials"
     source:
-      version: "0.3.1"
+      version: "0.4.0"
   - groupId: "com.cloudbees.jenkins.plugins"
     artifactId: "kubernetes-credentials-provider"
     source:
-      version: "0.9"
+      version: "0.10"
   - groupId: "org.csanchez.jenkins.plugins"
     artifactId: "kubernetes"
     source:
-      version: "1.12.4"
+      version: "1.12.6"
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "plain-credentials"
     source:
       version: "1.4"
-
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "pipeline-build-step"
     source:
@@ -107,7 +87,7 @@ plugins:
   - groupId: "org.jenkinsci.plugins"
     artifactId: "pipeline-model-api"
     source:
-      version: "1.3.1"
+      version: "1.3.2"
   - groupId: "org.jenkinsci.plugins"
     artifactId: "pipeline-model-declarative-agent"
     source:
@@ -115,11 +95,11 @@ plugins:
   - groupId: "org.jenkinsci.plugins"
     artifactId: "pipeline-model-definition"
     source:
-      version: "1.3.1"
+      version: "1.3.2"
   - groupId: "org.jenkinsci.plugins"
     artifactId: "pipeline-model-extensions"
     source:
-      version: "1.3.1"
+      version: "1.3.2"
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "pipeline-stage-step"
     source:
@@ -127,11 +107,11 @@ plugins:
   - groupId: "org.jenkinsci.plugins"
     artifactId: "pipeline-stage-tags-metadata"
     source:
-      version: "1.3.1"
+      version: "1.3.2"
   - groupId: "org.jenkins-ci.plugins.workflow"
     artifactId: "workflow-basic-steps"
     source:
-      version: "2.10"
+      version: "2.11"
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "ssh-credentials"
     source:
@@ -155,15 +135,15 @@ plugins:
   - groupId: "org.jenkins-ci.plugins.workflow"
     artifactId: "workflow-durable-task-step"
     source:
-      version: "2.21"
+      version: "2.22"
   - groupId: "org.jenkins-ci.plugins.workflow"
     artifactId: "workflow-cps-global-lib"
     source:
-      version: "2.10"
+      version: "2.11"
   - groupId: "org.jenkins-ci.plugins"
     artifactId: "durable-task"
     source:
-      version: "1.24"
+      version: "1.26"
   - groupId: "org.jenkins-ci.plugins.workflow"
     artifactId: "workflow-scm-step"
     source:
@@ -172,6 +152,11 @@ plugins:
     artifactId: "jx-resources"
     source:
       version: "1.0.15"
+  - groupId: "org.jenkins-ci.plugins"
+    artifactId: "jackson2-api"
+    source:
+      version: "2.8.11.2"
+
 systemProperties: {
     jenkins.model.Jenkins.slaveAgentPort: "50000",
     jenkins.model.Jenkins.slaveAgentPortEnforce: "true"}
