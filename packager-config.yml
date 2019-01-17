@@ -1,166 +1,31 @@
 bundle:
-  groupId: "io.jenkins.tools.custom-war-packager.demo"
-  artifactId: "jenkinsfile-runner"
-  vendor: "Jenkins project"
-  title: "Jenkinsfile Runner demo"
-  description: "Jenkinsfile Runner Docker Image, produced by Custom WAR Packager"
+  groupId: "io.jenkins-x"
+  artifactId: "jenkins-x-serverless"
+  vendor: "Jenkins X project"
+  title: "Jenkins X Serverless images"
+  description: "Jenkins X Serverless build images, produced by Custom WAR Packager"
 buildSettings:
+  pom: pom.xml
+  pomIgnoreRoot: false
+  jenkinsfileRunner:
+    source:
+      groupId: "io.jenkins"
+      artifactId: "jenkinsfile-runner"
+      build:
+        noCache: true
+      source:
+        git: https://github.com/jenkinsci/jenkinsfile-runner.git
+        commit: e60d694f6f712160603fb7fc127e3b3caefd4d16
+    docker:
+      base: "jenkins/jenkins:2.150.2"
+      tag: "jenkins-experimental/cwp-jenkinsfile-runner-demo"
+      build: false
 war:
   groupId: "org.jenkins-ci.main"
   artifactId: "jenkins-war"
   source:
-    version: "2.144"
-
-plugins:
-  - groupId: "org.jenkins-ci.plugins.workflow"
-    artifactId: "workflow-job"
-    source:
-      version: "2.25"
-  - groupId: "org.jenkins-ci.plugins.workflow"
-    artifactId: "workflow-cps"
-    source:
-      version: "2.56"
-  - groupId: "org.jenkins-ci.plugins"
-    artifactId: "pipeline-utility-steps"
-    source:
-      version: "2.1.0"
-  - groupId: "org.jenkins-ci.plugins"
-    artifactId: "cloudbees-folder"
-    source:
-      version: "6.6"
-  - groupId: "org.jenkins-ci.plugins"
-    artifactId: "credentials"
-    source:
-      version: "2.1.18"
-  - groupId: "org.jenkins-ci.plugins"
-    artifactId: "structs"
-    source:
-      version: "1.15"
-  - groupId: "org.jenkins-ci.plugins"
-    artifactId: "scm-api"
-    source:
-      version: "2.2.8"
-  - groupId: "org.jenkins-ci.plugins"
-    artifactId: "credentials-binding"
-    source:
-      version: "1.16"
-  - groupId: "org.jenkins-ci.plugins.workflow"
-    artifactId: "workflow-aggregator"
-    source:
-      version: "2.5"
-  - groupId: "io.jenkins"
-    artifactId: "configuration-as-code"
-    source:
-      version: "1.0"
-  - groupId: "org.jenkinsci.plugins"
-    artifactId: "kubernetes-credentials"
-    source:
-      version: "0.4.0"
-  - groupId: "com.cloudbees.jenkins.plugins"
-    artifactId: "kubernetes-credentials-provider"
-    source:
-      version: "0.10"
-  - groupId: "org.csanchez.jenkins.plugins"
-    artifactId: "kubernetes"
-    source:
-      version: "1.12.6"
-  - groupId: "org.jenkins-ci.plugins"
-    artifactId: "plain-credentials"
-    source:
-      version: "1.4"
-  - groupId: "org.jenkins-ci.plugins"
-    artifactId: "pipeline-build-step"
-    source:
-      version: "2.7"
-  - groupId: "org.jenkins-ci.plugins"
-    artifactId: "pipeline-graph-analysis"
-    source:
-      version: "1.7"
-  - groupId: "org.jenkins-ci.plugins"
-    artifactId: "pipeline-input-step"
-    source:
-      version: "2.8"
-  - groupId: "org.jenkins-ci.plugins"
-    artifactId: "pipeline-milestone-step"
-    source:
-      version: "1.3.1"
-  - groupId: "org.jenkinsci.plugins"
-    artifactId: "pipeline-model-api"
-    source:
-      version: "1.3.2"
-  - groupId: "org.jenkinsci.plugins"
-    artifactId: "pipeline-model-declarative-agent"
-    source:
-      version: "1.1.1"
-  - groupId: "org.jenkinsci.plugins"
-    artifactId: "pipeline-model-definition"
-    source:
-      version: "1.3.2"
-  - groupId: "org.jenkinsci.plugins"
-    artifactId: "pipeline-model-extensions"
-    source:
-      version: "1.3.2"
-  - groupId: "org.jenkins-ci.plugins"
-    artifactId: "pipeline-stage-step"
-    source:
-      version: "2.3"
-  - groupId: "org.jenkinsci.plugins"
-    artifactId: "pipeline-stage-tags-metadata"
-    source:
-      version: "1.3.2"
-  - groupId: "org.jenkins-ci.plugins.workflow"
-    artifactId: "workflow-basic-steps"
-    source:
-      version: "2.11"
-  - groupId: "org.jenkins-ci.plugins"
-    artifactId: "ssh-credentials"
-    source:
-      version: "1.14"
-  - groupId: "org.jenkins-ci.plugins.workflow"
-    artifactId: "workflow-step-api"
-    source:
-      version: "2.16"
-  - groupId: "org.jenkins-ci.plugins"
-    artifactId: "apache-httpcomponents-client-4-api"
-    source:
-      version: "4.5.5-3.0"
-  - groupId: "org.jenkins-ci.plugins.workflow"
-    artifactId: "workflow-api"
-    source:
-      version: "2.29"
-  - groupId: "org.jenkins-ci.plugins.workflow"
-    artifactId: "workflow-multibranch"
-    source:
-      version: "2.20"
-  - groupId: "org.jenkins-ci.plugins.workflow"
-    artifactId: "workflow-durable-task-step"
-    source:
-      version: "2.22"
-  - groupId: "org.jenkins-ci.plugins.workflow"
-    artifactId: "workflow-cps-global-lib"
-    source:
-      version: "2.11"
-  - groupId: "org.jenkins-ci.plugins"
-    artifactId: "durable-task"
-    source:
-      version: "1.26"
-  - groupId: "org.jenkins-ci.plugins.workflow"
-    artifactId: "workflow-scm-step"
-    source:
-      version: "2.6"
-  - groupId: "org.jenkins-ci.plugins"
-    artifactId: "jx-resources"
-    source:
-      version: "1.0.15"
-  - groupId: "org.jenkins-ci.plugins"
-    artifactId: "jackson2-api"
-    source:
-      version: "2.8.11.2"
-
-systemProperties: {
-    jenkins.model.Jenkins.slaveAgentPort: "50000",
-    jenkins.model.Jenkins.slaveAgentPortEnforce: "true"}
+    version: "2.150.2"
 casc:
-  - id: "initScripts"
+  - id: "casc"
     source:
       dir: casc.yml
